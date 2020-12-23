@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<form method="post" action="" id="policyForm">
+    <div><label>Тип страховки: <select name="type">
+        <option value="0">select type</option>
+        <option th:each="type : ${types}" th:value="${type.getId}" th:utext="${type.getName}" th:title="${type.getDescription}"></option>
+    </select></label></div>
+    <div id="propertiesDiv"><label id="properties" data-n="1">
+        Список имущества:<br>
+        <input type="text" id="name" name="props">Стоимость: <input type="number" min="1" step="any" name="sum" id="sum"><br>
+    </label>
+        <input type="button" id="addField" value="Добавить строку">
+    </div>
+    <div><label>Дата вступления в силу: <input type="date" name="startDate" id="startDate"></label></div>
+    <div><label>Дата окончания действия: <input type="date" name="endDate" id="endDate"></label></div>
+    <div><label>Стоимость страховки: <span id="iPay"></span></label></div>
+    <div><label>Дата подписания: <input type="date" name="dateOfSigning" id="dateOfSigning"></label></div>
+    <div><input type="button" id="sbmt_btn" value="Отправить"></div>
+</form>
+<div id="test"></div>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<form action="" id="policyForm" method="post">
+    <div><label>Тип страховки: <select name="type">
+        <option value="0">select type</option>
+        <option th:each="type : ${types}" th:title="${type.getDescription}" th:utext="${type.getName}"
+                th:value="${type.getId}"></option>
+    </select></label></div>
+    <div id="propertiesDiv"><label data-n="1" id="properties">
+        Лица допущенные к управлению т/с:<br>
+        <input id="name" name="persons" type="text"><br>
+    </label>
+        <input id="addField" type="button" value="Добавить строку">
+    </div>
+    <div><label>Марка и модель т/с: <input id="carBrandAndModel" name="carBrandAndModel" type="text" required></label></div>
+    <div id="cost"><label>Стоимость т/с: <input id="carCost" min="1" name="carCost" step="any" type="number" required></label></div>
+    <div><label>Идентификационный номер т/с: <input id="vehicleIdentificationNumber" name="vehicleIdentificationNumber" type="text" required></label></div>
+    <div><label>Госномер: <input id="vehicleNumber" name="vehicleNumber" type="text" required></label></div>
+    <div><label>Дата вступления в силу: <input id="startDate" name="startDate" type="date" required></label></div>
+    <div><label>Дата окончания действия: <input id="endDate" name="endDate" type="date" required></label></div>
+    <div><label>Стоимость страховки: <span id="iPay"></span></label></div>
+    <div><label>Дата подписания: <input id="dateOfSigning" name="dateOfSigning" type="date" required></label></div>
+    <div><input id="sbmt_btn" type="button" value="Отправить"></div>
+</form>
+<script src="js/scriptForCarpolicy.js"></script>
+</body>
+</html>
